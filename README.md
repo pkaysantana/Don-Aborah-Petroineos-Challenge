@@ -33,4 +33,3 @@ pp = PowerPlant()
 new_data = pp.load_new_data_from_file('wind_plants.csv')
 
 pp.save_new_data(new_data)
-
