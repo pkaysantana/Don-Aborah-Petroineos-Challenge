@@ -1,0 +1,12 @@
+# Python virtual environment
+venv/
+
+# Database file (if it exists and you want to exclude it)
+database.csv
+
+# Task description PDF
+power_plants_task.pdf
+
+# Python bytecode
+__pycache__/
+*.pyc
