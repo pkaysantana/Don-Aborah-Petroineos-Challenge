@@ -34,6 +34,3 @@ new_data = pp.load_new_data_from_file('wind_plants.csv')
 
 pp.save_new_data(new_data)
 
-Thank you for reviewing my submission!
-
-Feel free to reach out at aborahdon@gmail.com for any questions or feedback.
