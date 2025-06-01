@@ -391,12 +391,55 @@ class PowerPlant(object):
         # 6. Save the final data using helper method (includes backup and locking)
         self._save_database(final_data)
 
-    def get_data_from_database(self):
+    def get_data_from_database(self) -> pd.DataFrame:
         """
-        Retrieve data from the database.
+        Retrieves the full data from the database.csv file.
+
+        This method loads the entire dataset from the configured database file
+        ('database.csv') into a pandas DataFrame. It leverages an internal
+        helper method (`_load_database`) to handle file loading, potential errors, and basic
+        data type conversions (e.g., 'updatetime' to datetime objects).
+
+        Returns:
+            pd.DataFrame: A pandas DataFrame containing all records from the database.
+                          Returns an empty DataFrame if the database file does not exist
+                          or is empty.
+
+        Raises:
+            IOError: If there are issues reading the database file (e.g., file not found, permission denied, corruption).
         """
-        # Implementation to read data from the database
-        pass
+        # Previous implementation commented out:
+        # logger.info(f"Attempting to retrieve data from database: '{os.path.abspath(self.database_file)}'.")
+        # # Leverage the existing _load_database helper method for consistency and error handling
+        # data = self._load_database()
+        # logger.info(f"Successfully retrieved {len(data)} records from database.")
+        # return data
+
+        # New and improved implementation:
+
+        # Optionally, consider caching the DataFrame if reads are frequent and writes are infrequent.
+        # For example:
+        # if hasattr(self, '_cached_data') and self._cached_data_is_valid: # Check for validity flag
+        #     logger.debug("Returning cached data from database.")
+        #     return self._cached_data.copy() # Return a copy to prevent external modification
+
+        logger.debug(f"Attempting to retrieve data from database: '{os.path.abspath(self.database_file)}'.")
+        try:
+            # Leverage the existing _load_database helper method for consistency and error handling
+            data = self._load_database()
+            logger.info(f"Successfully retrieved {len(data)} records from database: '{os.path.abspath(self.database_file)}'.")
+            
+            # If caching is implemented:
+            # self._cached_data = data.copy()
+            # self._cached_data_is_valid = True
+            
+            return data
+        except IOError as e:
+            logger.error(f"Failed to retrieve data from database '{os.path.abspath(self.database_file)}': {e}")
+            raise # Re-raise the exception after logging
+        except Exception as e:
+            logger.critical(f"An unexpected critical error occurred while retrieving data from '{os.path.abspath(self.database_file)}': {e}")
+            raise IOError(f"Critical error during database retrieval: {e}") # Re-raise as IOError for consistency
 
     def aggregate_data_to_monthly(self):
         """
