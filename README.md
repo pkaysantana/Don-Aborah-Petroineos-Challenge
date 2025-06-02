@@ -4,7 +4,7 @@ This repository contains my solution for the **Petroineos Summer 2025 Data Analy
 
 ## Overview
 
-The `PowerPlant` class provides:
+The `PowerPlants` class provides:
 
 - Loading new power plant volume data from CSV files with robust error handling and strict data validation.
 - Merging and updating an existing database of power plant data stored in `database.csv`, with deduplication based on the most recent update time.
