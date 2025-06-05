@@ -30,7 +30,7 @@ The `PowerPlants` class provides:
 1.  Clone the repository:
 
     ```bash
-    git clone [https://github.com/pkaysantana/Don-Aborah-Petroineos-Challenge.git](https://github.com/pkaysantana/Don-Aborah-Petroineos-Challenge.git)
+    git clone https://github.com/pkaysantana/Don-Aborah-Petroineos-Challenge.git
     cd Don-Aborah-Petroineos-Challenge
     ```
 
@@ -62,5 +62,5 @@ The `PowerPlants` class provides:
 
 ---
 
-Developed by Don Aborah for the Petroineos Summer 2025 Internship Application
+Developed by Don Aborah for the Petroineos Summer 2025 Internship Application  
 For questions or suggestions, feel free to open an issue or contact me.
