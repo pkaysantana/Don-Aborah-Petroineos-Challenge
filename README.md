@@ -26,3 +26,29 @@ The `PowerPlants` class provides:
    ```bash
    git clone https://github.com/pkaysantana/Don-Aborah-Petroineos-Challenge.git
    cd Don-Aborah-Petroineos-Challenge
+2. Place your input CSV files (e.g., gas_plants.csv, wind_plants.csv) in the project directory.
+
+3. Use the PowerPlants class from power_plants.py to load, process, and save data:
+   from power_plants import PowerPlants
+   
+   pp = PowerPlants()
+   
+   # Load new data from a CSV file
+   new_data = pp.load_new_data_from_file('wind_plants.csv')
+   
+   # Save the loaded data into the database, merging with existing data
+   pp.save_new_data(new_data)
+
+##  Design Considerations
+Data Integrity: Validates required fields and rejects malformed records.
+
+Performance: Uses category and float32 types for reduced memory usage.
+
+Backup Strategy: Automatically saves a limited set of timestamped backups.
+
+Logging: Logs all key actions and warnings using Python’s logging module.
+
+Portability: Compatible across OSes, with optional file-locking on Unix-like systems.
+
+Developed by Don Aborah for the Petroineos Summer 2025 Internship Application
+For questions or suggestions, feel free to open an issue or contact me.
