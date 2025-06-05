@@ -29,6 +29,7 @@ The `PowerPlants` class provides:
 2. Place your input CSV files (e.g., gas_plants.csv, wind_plants.csv) in the project directory.
 
 3. Use the PowerPlants class from power_plants.py to load, process, and save data:
+   ''' python
    from power_plants import PowerPlants
    
    pp = PowerPlants()
